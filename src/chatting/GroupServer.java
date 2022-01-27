@@ -1,4 +1,4 @@
-package GroupChatting;
+package chatting;
 
 import java.net.*;
 import java.io.*;
@@ -14,6 +14,10 @@ public class GroupServer implements Runnable{
         try{
             this.socket = socket;
         }catch(Exception e){}
+    }
+
+    GroupServer() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     
@@ -44,7 +48,7 @@ public class GroupServer implements Runnable{
     
     
     public static void main(String[] args) throws Exception{
-        ServerSocket s = new ServerSocket(2003);
+       ServerSocket s = new ServerSocket(2003);
         while(true){
             Socket socket = s.accept();
             GroupServer server = new GroupServer(socket);

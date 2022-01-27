@@ -6,15 +6,15 @@ import java.awt.*;
 import java.awt.event.*;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
-import java.sql.DriverManager;
+import java.sql.*;
 
-public class RegPage extends JFrame implements  ActionListener{
+public class RegPage extends JFrame {
     
     JPanel left,right;
     JTextField user,pass,repass,email;
     JButton but1,but2,but3;
     
-    RegPage(){
+    RegPage(Connection con , Statement st){
         
         left = new JPanel();
         left.setLayout(null);
@@ -59,7 +59,16 @@ public class RegPage extends JFrame implements  ActionListener{
         but1.setForeground(Color.BLACK);
         but1.setFont(new Font("SAN_SERIF", Font.BOLD, 25));
        // but1.setBorder(new RoundBtn1(15));
-       but1.addActionListener(this);
+       but1.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+               LoginPage lp = new LoginPage();
+               lp.show();
+                dispose();
+
+            }
+       
+       });
         left.add(but1);
      
          right = new JPanel();
@@ -160,7 +169,32 @@ public class RegPage extends JFrame implements  ActionListener{
         but2.setForeground(Color.WHITE);
         but2.setFont(new Font("SAN_SERIF", Font.BOLD, 25));
        // but1.setBorder(new RoundBtn1(15));
-        but2.addActionListener(this);
+        but2.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+              try{
+                  String us = user.getText();
+                  String em = email.getText();
+                  String ps = pass.getText();
+                  String cmps = repass.getText();
+                  if(ps.equals(cmps)){
+                       String q = "insert into connectauth values ('" + us +"', '"+ em +"', '"+ ps +"')";
+                       st.executeUpdate(q);
+                       JOptionPane.showMessageDialog(left, "Registation Succsessfull");
+                  }
+                  else{
+                      JOptionPane.showMessageDialog(left, "Password didn't matched");
+                  }
+                  user.setText("User name");
+                  email.setText("Email");
+                  pass.setText("Set Password");
+                  repass.setText("Set Password again");
+                 
+              }catch(Exception e){}
+            
+            }
+            
+        });
         right.add(but2);
         
         
@@ -174,26 +208,14 @@ public class RegPage extends JFrame implements  ActionListener{
     
     
     
-     public void actionPerformed(ActionEvent ae){
-         
-         if(ae.getSource()==but1){
-             LoginPage lp= new LoginPage();
-            lp.show();
-            dispose();
-         }
-         if(ae.getSource()==but2){
-//             try{
-//                 Class.forName("com.mysql.jdbc.Driver");
-//                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/authinfo", "root","");
-//                 String sql = "INSERT INTO 'authinfo' ('name','email','pass') VALUES (?,?,?)";
-//                 p=con.prepareStatement(sql);
-//             }catch(Exception e){}
-         }
-     }
+ 
     
-    public static void main(String[] args) {
-        new RegPage().setVisible(true);
+    public static void main(String[] args) throws Exception {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost/connectstorage", "root", "");
+		
+         Statement st = con.createStatement();
+        new RegPage(con,st).setVisible(true);
     }
-    
-    
+
 }

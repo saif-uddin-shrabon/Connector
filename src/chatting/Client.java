@@ -18,7 +18,8 @@ public class Client implements ActionListener{
     JPanel p1;
     JTextField t1;
     JButton b1;
-    static JTextArea a1;
+    static JPanel a1;
+    
     static JFrame f1 = new JFrame();
     
     static Socket s;
@@ -31,8 +32,8 @@ public class Client implements ActionListener{
         f1.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
          p1= new JPanel ();
          p1.setLayout(null);
-         p1.setBackground(new Color(7,94,84));
-         p1.setBounds(0,0,450,70);
+         p1.setBackground(new Color(60, 178, 156));
+         p1.setBounds(0,0,1100,70);
          f1.add(p1);
         
         //for picking icon image 
@@ -54,7 +55,7 @@ public class Client implements ActionListener{
         Image  i5 = i4.getImage().getScaledInstance(60,60,Image.SCALE_DEFAULT);
         ImageIcon i6 = new ImageIcon (i5);
         JLabel l2 = new JLabel(i6);
-        l2.setBounds(40,4,60,60);
+        l2.setBounds(50,4,60,60);
         p1.add(l2);
         
         //for picking video icon 
@@ -62,7 +63,7 @@ public class Client implements ActionListener{
         Image  i8 = i7.getImage().getScaledInstance(30,30,Image.SCALE_DEFAULT);
         ImageIcon i9 = new ImageIcon (i8);
         JLabel l5 = new JLabel(i9);
-        l5.setBounds(290,20,30,30);
+        l5.setBounds(950,20,30,30);
         p1.add(l5);
         
         //for picking phone icone 
@@ -70,7 +71,7 @@ public class Client implements ActionListener{
         Image  i12 = i11.getImage().getScaledInstance(30,30,Image.SCALE_DEFAULT);
         ImageIcon i13 = new ImageIcon (i12);
         JLabel l6 = new JLabel(i13);
-        l6.setBounds(350,20,35,30);
+        l6.setBounds(1000,20,35,30);
         p1.add(l6);
         
         //for picking 3dot icon 
@@ -78,17 +79,17 @@ public class Client implements ActionListener{
         Image  i15 = i14.getImage().getScaledInstance(13,25,Image.SCALE_DEFAULT);
         ImageIcon i16 = new ImageIcon (i15);
         JLabel l7 = new JLabel(i16);
-        l7.setBounds(410,20,13,25);
+        l7.setBounds(1050,20,13,25);
         p1.add(l7);
         
         
         //Adding Profile name
-        JLabel l3 =new JLabel ("Student");
+        JLabel l3 =new JLabel ("Saif");
         //Font name
         l3.setFont(new Font("SAN_SERIF", Font.BOLD,18));
         //Font color
         l3.setForeground(Color.WHITE);
-        l3.setBounds(110,15,100,20);
+        l3.setBounds(120,15,100,20);
         p1.add(l3);
         
         //Adding Active Status
@@ -97,7 +98,7 @@ public class Client implements ActionListener{
         l4.setFont(new Font("SAN_SERIF", Font.PLAIN,14));
         //Font color
         l4.setForeground(Color.WHITE);
-        l4.setBounds(110,35,100,20);
+        l4.setBounds(120,35,100,20);
         p1.add(l4);
         
         //Timer Set
@@ -113,18 +114,20 @@ public class Client implements ActionListener{
         
         
         //Text Area
-        a1= new JTextArea();
+       a1= new JPanel();
+//        a1.setBounds(5, 75,440,570);
         a1.setFont(new Font("SAN_SERIF", Font.BOLD,16));
+//        f1.add(a1);
 
         
         JScrollPane sp = new JScrollPane(a1);
-        sp.setBounds(5, 75,440,570);
+        sp.setBounds(5, 75,1070,570);
         sp.setBorder(BorderFactory.createEmptyBorder());
         f1.add(sp);
         
         //Text Field
         t1 =new JTextField();
-        t1.setBounds(5, 655,310, 40);
+        t1.setBounds(5, 655,945, 40);
         t1.setFont(new Font("SAN_SERIF", Font.BOLD,16));
         f1.add(t1);
         
@@ -150,7 +153,7 @@ public class Client implements ActionListener{
         
         //Send Button
         b1= new JButton("Send");
-        b1.setBounds(320, 655, 123, 40);
+        b1.setBounds(950, 655, 123, 40);
         b1.setBackground(new Color(7,94,84));
         b1.setForeground(Color.WHITE);
         b1.setFont(new Font("SAN_SERIF", Font.PLAIN, 16));
@@ -158,9 +161,9 @@ public class Client implements ActionListener{
         f1.add(b1);
         
         f1.setLayout(null);
-        f1.setSize(450,700);
-        f1.setLocation(1000,200);
-        f1.setUndecorated(true); //for removing header
+        f1.setSize(1100,745);
+        f1.setLocation(600,200);
+       // f1.setUndecorated(true); //for removing header
         f1.setVisible(true);
         
     }

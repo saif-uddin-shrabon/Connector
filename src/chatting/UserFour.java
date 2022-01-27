@@ -1,4 +1,4 @@
-package GroupChatting;
+package chatting;
 
 import javax.swing.*;
 import java.awt.*;
@@ -21,7 +21,7 @@ public class UserFour extends JFrame implements ActionListener, Runnable{
         
         p1 = new JPanel();
         p1.setLayout(null);
-        p1.setBackground(new Color(7, 94, 84));
+        p1.setBackground(new Color(60, 178, 156));
         p1.setBounds(0, 0, 450, 70);
         add(p1);
         
@@ -114,9 +114,9 @@ public class UserFour extends JFrame implements ActionListener, Runnable{
         
        getContentPane().setBackground(Color.WHITE);
        setLayout(null);
-       setSize(450, 700);
+       setSize(450, 745);
        setLocation(1440, 200); 
-       setUndecorated(true);
+       //setUndecorated(true);
        setVisible(true);
        
        try{
@@ -131,7 +131,7 @@ public class UserFour extends JFrame implements ActionListener, Runnable{
     }
     
     public void actionPerformed(ActionEvent ae){
-        String str = "Maimol-Tushar\n"+t1.getText();
+        String str = "Tushar\n"+t1.getText();
         try{
             writer.write(str);
             writer.write("\r\n");
@@ -151,9 +151,9 @@ public class UserFour extends JFrame implements ActionListener, Runnable{
     }
     
     public static void main(String[] args){
-        UserFour one = new UserFour();
+        UserFour four = new UserFour();
         //Starting Thread
-        Thread t1 = new Thread(one);
+        Thread t1 = new Thread(four);
         t1.start();
     }
     

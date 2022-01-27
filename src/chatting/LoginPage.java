@@ -5,17 +5,18 @@ import java.awt.*;
 import java.awt.event.*;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.sql.*;
 
 
-public class LoginPage extends JFrame implements ActionListener {
+public class LoginPage extends JFrame  {
     JPanel left,right;
     JTextField user,repass;
-    JPasswordField pass;
+    JTextField pass;
     JButton but1,but2,but3;
     
     
     
-    LoginPage(){
+    LoginPage(Connection con, Statement st){
         left = new JPanel();
         left.setLayout(null);
         left.setBackground(new Color(60, 178, 156));
@@ -59,7 +60,15 @@ public class LoginPage extends JFrame implements ActionListener {
         but1.setForeground(Color.BLACK);
         but1.setFont(new Font("SAN_SERIF", Font.BOLD, 25));
        // but1.setBorder(new RoundBtn1(15));
-        but1.addActionListener(this);
+        but1.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                  
+                
+                 dispose();
+            }
+        
+        });
         left.add(but1);
      
          right = new JPanel();
@@ -95,7 +104,7 @@ public class LoginPage extends JFrame implements ActionListener {
         });
         right.add(user);
         
-        pass =new JPasswordField();
+        pass =new JTextField();
         pass.setText("Password");
         pass.setBounds(160,360,350, 40);
         pass.setFont(new Font("SAN_SERIF", Font.BOLD,16));
@@ -122,7 +131,27 @@ public class LoginPage extends JFrame implements ActionListener {
         but2.setForeground(Color.WHITE);
         but2.setFont(new Font("SAN_SERIF", Font.BOLD, 25));
        // but1.setBorder(new RoundBtn1(15));
-        but2.addActionListener(this);
+        but2.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+               try{
+                 String u = user.getText();
+                 String p = pass.getText();
+                 String q = "select * from connectauth where username='"+u+"' and password='"+p+"'";
+                 ResultSet rs = st.executeQuery(q);
+                 if(rs.next()){
+                     new Server();
+                    
+                 }
+                 else{
+                JOptionPane.showMessageDialog(null, "Invalid login");
+                
+               }
+             }catch(Exception e){}
+               dispose();
+            }
+            
+        });
         right.add(but2);
         
         
@@ -133,22 +162,17 @@ public class LoginPage extends JFrame implements ActionListener {
         setVisible(true);
         setDefaultCloseOperation(3);
     }
-     public void actionPerformed(ActionEvent ae){
-         if(ae.getSource()==but1){
-             RegPage rp= new RegPage();
-             rp.show();
-             dispose();
-         }
-         if(ae.getSource()==but2){
-             Server sv = new Server();
-             sv.show();
-             dispose();
-         }
+ 
+ 
          
-     }
+     
     
-    public static void main(String[] args) {
-        new LoginPage().setVisible(true);
+    public static void main(String[] args) throws Exception{
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost/connectstorage", "root", "");
+		
+         Statement st = con.createStatement();
+        new LoginPage(con,st).setVisible(true);
     }
     
 }

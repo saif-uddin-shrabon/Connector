@@ -1,5 +1,4 @@
-
-package GroupChatting;
+package chatting;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,7 +7,7 @@ import java.awt.event.*;
 import java.io.*;
 import java.net.*;
 
-public class UserTwo extends JFrame implements ActionListener, Runnable{
+public class UserOne extends JFrame implements ActionListener, Runnable{
     JPanel p1;
     JTextField t1;
     JButton b1;
@@ -18,11 +17,11 @@ public class UserTwo extends JFrame implements ActionListener, Runnable{
     BufferedWriter writer;
     BufferedReader reader;
 
-    UserTwo(){
+    UserOne(){
         
         p1 = new JPanel();
         p1.setLayout(null);
-        p1.setBackground(new Color(7, 94, 84));
+        p1.setBackground(new Color(60, 178, 156));
         p1.setBounds(0, 0, 450, 70);
         add(p1);
         
@@ -115,9 +114,9 @@ public class UserTwo extends JFrame implements ActionListener, Runnable{
         
        getContentPane().setBackground(Color.WHITE);
        setLayout(null);
-       setSize(450, 700);
-       setLocation(490, 200); 
-       setUndecorated(true);
+       setSize(450, 745);
+       setLocation(20, 200); 
+       //setUndecorated(true);
        setVisible(true);
        
        try{
@@ -132,7 +131,7 @@ public class UserTwo extends JFrame implements ActionListener, Runnable{
     }
     
     public void actionPerformed(ActionEvent ae){
-        String str = "Saif\n"+t1.getText();
+        String str = "Rayat-CR\n"+t1.getText();
         try{
             writer.write(str);
             writer.write("\r\n");
@@ -152,11 +151,10 @@ public class UserTwo extends JFrame implements ActionListener, Runnable{
     }
     
     public static void main(String[] args){
-        UserTwo one = new UserTwo();
+        UserOne one = new UserOne();
         //Starting Thread
         Thread t1 = new Thread(one);
         t1.start();
     }
     
 }
-
