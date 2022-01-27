@@ -63,9 +63,9 @@ public class LoginPage extends JFrame  {
         but1.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent ae) {
-                  
-                
+                 
                  dispose();
+                 new RegPage(con,st).setVisible(true);
             }
         
         });
@@ -140,8 +140,8 @@ public class LoginPage extends JFrame  {
                  String q = "select * from connectauth where username='"+u+"' and password='"+p+"'";
                  ResultSet rs = st.executeQuery(q);
                  if(rs.next()){
-                     new Server();
-                    
+                     new deshbord().setVisible(true);
+                    setVisible(false);
                  }
                  else{
                 JOptionPane.showMessageDialog(null, "Invalid login");

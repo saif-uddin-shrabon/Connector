@@ -62,9 +62,9 @@ public class RegPage extends JFrame {
        but1.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent ae) {
-               LoginPage lp = new LoginPage();
-               lp.show();
                 dispose();
+              new LoginPage(con,st).setVisible(true);
+                
 
             }
        
@@ -183,7 +183,7 @@ public class RegPage extends JFrame {
                        JOptionPane.showMessageDialog(left, "Registation Succsessfull");
                   }
                   else{
-                      JOptionPane.showMessageDialog(left, "Password didn't matched");
+                      JOptionPane.showMessageDialog(right, "Password didn't matched");
                   }
                   user.setText("User name");
                   email.setText("Email");
@@ -218,4 +218,5 @@ public class RegPage extends JFrame {
         new RegPage(con,st).setVisible(true);
     }
 
+  
 }

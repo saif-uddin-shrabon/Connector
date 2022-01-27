@@ -26,7 +26,7 @@ public class UserFour extends JFrame implements ActionListener, Runnable{
         add(p1);
         
         //for picking icon image
-       ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("GroupChatting/icons/3.png"));
+       ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("chatting/icons/3.png"));
        Image i2 = i1.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT);
        ImageIcon i3 = new ImageIcon(i2);
        JLabel l1 = new JLabel(i3);
@@ -41,7 +41,7 @@ public class UserFour extends JFrame implements ActionListener, Runnable{
        });
        
        //for picking profile image 
-       ImageIcon i4 = new ImageIcon(ClassLoader.getSystemResource("GroupChatting/icons/1.png"));
+       ImageIcon i4 = new ImageIcon(ClassLoader.getSystemResource("chatting/icons/1.png"));
        Image i5 = i4.getImage().getScaledInstance(60, 60, Image.SCALE_DEFAULT);
        ImageIcon i6 = new ImageIcon(i5);
        JLabel l2 = new JLabel(i6);
@@ -49,7 +49,7 @@ public class UserFour extends JFrame implements ActionListener, Runnable{
        p1.add(l2);
        
        //for picking video icon 
-       ImageIcon i7 = new ImageIcon(ClassLoader.getSystemResource("GroupChatting/icons/video.png"));
+       ImageIcon i7 = new ImageIcon(ClassLoader.getSystemResource("chatting/icons/video.png"));
        Image i8 = i7.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT);
        ImageIcon i9 = new ImageIcon(i8);
        JLabel l5 = new JLabel(i9);
@@ -57,7 +57,7 @@ public class UserFour extends JFrame implements ActionListener, Runnable{
        p1.add(l5);
         
        //for picking phone icone 
-       ImageIcon i11 = new ImageIcon(ClassLoader.getSystemResource("GroupChatting/icons/phone.png"));
+       ImageIcon i11 = new ImageIcon(ClassLoader.getSystemResource("chatting/icons/phone.png"));
        Image i12 = i11.getImage().getScaledInstance(35, 30, Image.SCALE_DEFAULT);
        ImageIcon i13 = new ImageIcon(i12);
        JLabel l6 = new JLabel(i13);
@@ -65,7 +65,7 @@ public class UserFour extends JFrame implements ActionListener, Runnable{
        p1.add(l6);
        
        //for picking 3dot icon 
-       ImageIcon i14 = new ImageIcon(ClassLoader.getSystemResource("GroupChatting/icons/3icon.png"));
+       ImageIcon i14 = new ImageIcon(ClassLoader.getSystemResource("chatting/icons/3icon.png"));
        Image i15 = i14.getImage().getScaledInstance(13, 25, Image.SCALE_DEFAULT);
        ImageIcon i16 = new ImageIcon(i15);
        JLabel l7 = new JLabel(i16);
